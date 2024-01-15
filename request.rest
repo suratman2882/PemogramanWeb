@@ -1,0 +1,109 @@
+###
+POST http://localhost:5000/Pembelian
+Content-Type: application/json
+
+{
+    "name": "Makanan"
+}
+
+###
+POST http://localhost:5000/Pembelian
+Content-Type: application/json
+
+{
+    "name": "Minuman"
+}
+
+###
+GET http://localhost:5000/pembelian
+
+###
+POST http://localhost:5000/product
+Content-Type: application/json
+
+{
+    "name": "Air Pristine",
+    "price": 20000,
+    "Jumlah": 30,
+    "Supplierid": 1
+}
+
+###
+POST http://localhost:5000/product
+Content-Type: application/json
+
+{
+    "name": "Tissue",
+    "price": 25000,
+    "Jumlah": 20,
+    "SupplierId": 1
+}
+
+###
+POST http://localhost:5000/product
+Content-Type: application/json
+
+{
+    "name": "Kertas HVS",
+    "price": 100000,
+}
+
+###
+GET http://localhost:5000/product
+
+###
+GET http://localhost:5000/product/1
+
+###
+POST http://localhost:5000/Pembelian
+Content-Type: application/json
+
+{
+    "productId": 1,
+    "qty": 2,
+    "total": 40000
+}
+
+###
+POST http://localhost:5000/Pembelian
+Content-Type: application/json
+
+{
+    "productId": 2,
+    "qty": 1,
+    "total": 25000
+}
+
+###
+GET http://localhost:5000/Pembelian
+
+###
+PATCH  http://localhost:5000/product/2
+Content-Type: application/json
+
+{
+    "name": "Product 02 update",
+    "price": 30000
+}
+
+###
+DELETE  http://localhost:5000/product/1
+
+###
+POST http://localhost:5000/Transaksi
+Content-Type: application/json
+
+{
+    "name_Barang": "Makanan"
+}
+
+###
+POST http://localhost:5000/Transaksi
+Content-Type: application/json
+
+{
+    "name_Barang": "Minuman"
+}
+
+###
+GET http://localhost:5000/Transaksi
