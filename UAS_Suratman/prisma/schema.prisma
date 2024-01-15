@@ -1,0 +1,64 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Supplier {
+  id              Int   @id @default(autoincrement())
+  nama_Supplier   String
+  price           Int
+  Jumlah          Int
+  createdAt       DateTime @default(now())
+  Product         Product[]
+}
+
+model Product {
+  id                   Int      @id @default(autoincrement())
+  name_Barang         String
+  price                Int
+  Jumlah               Int
+  Supplierid           Int
+  Stock_Barang         Int 
+  Supplier             Supplier  @relation(fields:[Supplierid], references:[id])
+  createdAt            DateTime @default(now())
+  Pembelian            Pembelian[]
+}
+
+model Pembelian {
+  id                Int      @id @default(autoincrement())
+  name_Pembeli      String
+  Jumlah_Barang     Int
+  Total_Harga       Int
+  Productid         Int
+  Product           Product   @relation(fields:[Productid], references:[id])
+  Transaksi         Transaksi[]
+  createdAt        DateTime @default(now())
+}
+
+model Transaksi {
+  id                Int      @id @default(autoincrement())
+  name_Barang       String
+  Jumlah_Barang     Int
+  Total_Harga       Int
+  Pembelianid        Int
+  Pembelian         Pembelian   @relation(fields:[Pembelianid], references:[id])
+  Transaksi_Barang  Transaksi_Barang[]
+  createdAt        DateTime @default(now())
+}
+
+model Transaksi_Barang {
+  id                Int      @id @default(autoincrement())
+  name_Barang       String
+  Jumlah_Barang     Int
+  Barang_Keluar     Int
+  Transaksiid        Int
+  Transaksi         Transaksi   @relation(fields:[Transaksiid], references:[id])
+  createdAt        DateTime @default(now())
+}
